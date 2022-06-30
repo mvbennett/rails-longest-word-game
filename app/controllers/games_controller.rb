@@ -18,9 +18,9 @@ class GamesController < ApplicationController
       @in_grid = false if grid_tally[key].nil? || val > grid_tally[key]
     end
     url = "https://wagon-dictionary.herokuapp.com/#{@word}"
-    word_serialized = URI.open(url).read
+    word_serialized = URI.parse(url).open.read
     word_hash = JSON.parse(word_serialized)
-    @english = word_hash["found"]
+    @english = word_hash['found']
     @result = if @in_grid == false
                 "Sorry #{@word} can't be made from #{@grid.join(', ')}"
               elsif @english == false

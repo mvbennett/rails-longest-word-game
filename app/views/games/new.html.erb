@@ -1,10 +1,19 @@
-<h1>
-  <%= @grid.join(", ") %>
-</h1>
-<form action="score">
-  <label for="word">Your longest word:</label>
-  <input type="text" name="word">
-  <input name="grid" value="<%= @grid.join %>" hidden="true">
-  <input type="submit">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</form>
+<div class="container">
+  <%= session[:current_user_id] %>
+  <h1>
+    <div class="grid-container">
+      <% @grid.each do |letter| %>
+        <div class="letter-box" style="background-color: hsl(<%= rand(0..255) %>, 70%, 90%)">
+          <%= letter %>
+        </div>
+      <% end %>
+    </div>
+  </h1>
+  <form action="score" method="post">
+    <label for="word">Your longest word:</label>
+    <input type="text" name="word">
+    <input type="hidden" name="grid" value="<%= @grid.join %>">
+    <input type="submit" value="Does it English?">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+</div>

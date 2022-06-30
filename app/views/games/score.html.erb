@@ -1,7 +1,10 @@
-<h1>
-  Your word is: <%= @word.capitalize %>
-</h1>
+<div class="container">
+  <h1>
+    Your word is: <%= @word.capitalize %>
+  </h1>
 
-<h2>
-  <%= @result %>
-</h2>
+  <h2>
+    <%= @result %>
+  </h2>
+  <%= link_to 'Play again?', 'new' %>
+</div>
